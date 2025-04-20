@@ -1,0 +1,18 @@
+name: fpm
+
+on: [push, pull_request]
+
+jobs:
+  fpm:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Install fpm
+        uses: fortran-lang/setup-fpm@v7
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Check fpm
+        run: fpm -v
