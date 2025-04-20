@@ -16,3 +16,8 @@ jobs:
 
       - name: Check fpm
         run: fpm -v
+
+      - name: Build the library
+        run: |
+            gfortran --version
+            fpm build --flag "-Wall -Wextra -ffree-line-length-none"
