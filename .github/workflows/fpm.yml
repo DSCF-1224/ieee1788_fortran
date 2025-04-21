@@ -2,9 +2,13 @@ name: fpm
 
 on: [push, pull_request]
 
+env:
+  GFORTRAN_FLAGS: "-Wall -Wextra -std=f2008 -ffree-line-length-none"
+
 jobs:
   fpm:
     runs-on: ubuntu-latest
+
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
@@ -22,8 +26,8 @@ jobs:
 
       - name: Build the library
         run: |
-            fpm build --flag "-Wall -Wextra -ffree-line-length-none"
+            fpm build --flag $GFORTRAN_FLAGS
 
       - name: test the library
         run: |
-            fpm test --flag "-Wall -Wextra -ffree-line-length-none"
+            fpm test --flag $GFORTRAN_FLAGS
