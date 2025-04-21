@@ -26,8 +26,8 @@ jobs:
 
       - name: Build the library
         run: |
-            fpm build --flag $GFORTRAN_FLAGS
+            fpm build --flag "$GFORTRAN_FLAGS"
 
       - name: test the library
         run: |
-            fpm test --flag $GFORTRAN_FLAGS
+            fpm test --flag "$GFORTRAN_FLAGS"
