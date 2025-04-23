@@ -1,2 +1,12 @@
+#:mute
+
+#:set IEEE_CLASS_TYPES = ["ieee_negative_inf", "ieee_negative_zero", "ieee_positive_inf", "ieee_positive_zero"]
+
+#:endmute
 module ieee1788_fortran
+
+    #:for TYPE in IEEE_CLASS_TYPES
+    use, non_intrinsic :: ieee_class_fortran, only: is_${TYPE}$
+    #:endfor
+
 end module ieee1788_fortran

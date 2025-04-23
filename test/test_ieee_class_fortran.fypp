@@ -31,7 +31,7 @@ program test_ieee_class_fortran
     use, intrinsic :: ieee_arithmetic, only: ieee_value
 
 
-    use, non_intrinsic :: ieee_class_fortran
+    use, non_intrinsic :: ieee1788_fortran
 
 
     implicit none
