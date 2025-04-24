@@ -15,4 +15,14 @@ module ieee1788_fortran
     use, non_intrinsic :: ieee_class_fortran, only: is_${TYPE}$
     #:endfor
 
+
+    implicit none
+
+
+    private
+
+    #:for TYPE in IEEE_CLASS_TYPES
+    public :: is_${TYPE}$
+    #:endfor
+
 end module ieee1788_fortran
