@@ -15,9 +15,25 @@ module ieee1788_fortran
 
     private
 
+    public :: bare_infsup_real32_type
+    public :: bare_infsup_real64_type
+    public :: bare_infsup_real128_type
     public :: is_ieee_negative_inf
     public :: is_ieee_negative_zero
     public :: is_ieee_positive_inf
     public :: is_ieee_positive_zero
+
+
+    type :: bare_infsup_real32_type
+        real(real32), private :: inf, sup
+    end type bare_infsup_real32_type
+
+    type :: bare_infsup_real64_type
+        real(real64), private :: inf, sup
+    end type bare_infsup_real64_type
+
+    type :: bare_infsup_real128_type
+        real(real128), private :: inf, sup
+    end type bare_infsup_real128_type
 
 end module ieee1788_fortran

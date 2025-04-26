@@ -21,8 +21,19 @@ module ieee1788_fortran
 
     private
 
+    #:for KIND in REAL_KINDS
+    public :: bare_infsup_${KIND}$_type
+    #:endfor
     #:for TYPE in IEEE_CLASS_TYPES
     public :: is_${TYPE}$
+    #:endfor
+
+    #:for KIND in REAL_KINDS
+
+    #:set TYPE_NAME = "bare_infsup_" + KIND + "_type"
+    type :: ${TYPE_NAME}$
+        real(${KIND}$), private :: inf, sup
+    end type ${TYPE_NAME}$
     #:endfor
 
 end module ieee1788_fortran
