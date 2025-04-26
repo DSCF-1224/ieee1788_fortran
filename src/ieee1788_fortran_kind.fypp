@@ -1,10 +1,4 @@
-#:mute
-
-#:set IEEE_CLASS_TYPES = ["ieee_negative_inf", "ieee_negative_zero", "ieee_positive_inf", "ieee_positive_zero"]
-
-#:set REAL_KINDS = ["real32", "real64", "real128"]
-
-#:endmute
+#:include "ieee1788_fortran_common.fypp"
 submodule (ieee1788_fortran) ieee1788_fortran_kind
 
     implicit none
