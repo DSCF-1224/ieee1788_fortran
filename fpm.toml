@@ -11,7 +11,6 @@ auto-tests = true
 auto-examples = true
 module-naming = false
 external-modules = [
-    "stdlib",
     "build/dependencies/ieee_class_fortran"
 ]
 
@@ -24,5 +23,4 @@ implicit-external = false
 source-form = "free"
 
 [dependencies]
-stdlib = "*"
 ieee_class_fortran = { git = "https://github.com/DSCF-1224/ieee_class_fortran", branch = "main" }

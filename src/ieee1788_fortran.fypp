@@ -2,13 +2,13 @@
 
 #:set IEEE_CLASS_TYPES = ["ieee_negative_inf", "ieee_negative_zero", "ieee_positive_inf", "ieee_positive_zero"]
 
-#:set REAL_KINDS = ["sp", "dp", "qp"]
+#:set REAL_KINDS = ["real32", "real64", "real128"]
 
 #:endmute
 module ieee1788_fortran
 
     #:for KIND in REAL_KINDS
-    use, non_intrinsic :: stdlib_kinds, only: ${KIND}$
+    use, intrinsic :: iso_fortran_env, only: ${KIND}$
     #:endfor
 
     #:for TYPE in IEEE_CLASS_TYPES

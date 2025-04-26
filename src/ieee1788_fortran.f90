@@ -1,8 +1,8 @@
 module ieee1788_fortran
 
-    use, non_intrinsic :: stdlib_kinds, only: sp
-    use, non_intrinsic :: stdlib_kinds, only: dp
-    use, non_intrinsic :: stdlib_kinds, only: qp
+    use, intrinsic :: iso_fortran_env, only: real32
+    use, intrinsic :: iso_fortran_env, only: real64
+    use, intrinsic :: iso_fortran_env, only: real128
 
     use, non_intrinsic :: ieee_class_fortran, only: is_ieee_negative_inf
     use, non_intrinsic :: ieee_class_fortran, only: is_ieee_negative_zero
