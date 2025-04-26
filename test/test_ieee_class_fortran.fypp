@@ -36,6 +36,7 @@ program test_ieee_class_fortran
     call test_is_ieee_negative_zero
     call test_is_ieee_positive_inf
     call test_is_ieee_positive_zero
+    print '(A)', 'OK: ${_FILE_}$'
 
 
     contains
