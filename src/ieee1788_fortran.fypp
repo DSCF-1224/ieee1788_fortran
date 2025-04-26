@@ -27,6 +27,7 @@ module ieee1788_fortran
     #:for TYPE in IEEE_CLASS_TYPES
     public :: is_${TYPE}$
     #:endfor
+    public :: kind
 
     #:for KIND in REAL_KINDS
 
@@ -35,5 +36,22 @@ module ieee1788_fortran
         real(${KIND}$), private :: inf, sup
     end type ${TYPE_NAME}$
     #:endfor
+
+
+    !> `kind(x)` returns the kind value of the entity `x`.
+    interface kind
+        #:for KIND in REAL_KINDS
+
+        #:set FUNCTION_NAME = "bare_infsup_" + KIND + "_kind"
+        module pure elemental function ${FUNCTION_NAME}$(x) result(result)
+
+            type(bare_infsup_${KIND}$_type), intent(in) :: x
+
+            integer :: result
+
+        end function ${FUNCTION_NAME}$
+
+        #:endfor
+    end interface kind
 
 end module ieee1788_fortran

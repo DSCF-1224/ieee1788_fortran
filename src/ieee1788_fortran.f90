@@ -22,6 +22,7 @@ module ieee1788_fortran
     public :: is_ieee_negative_zero
     public :: is_ieee_positive_inf
     public :: is_ieee_positive_zero
+    public :: kind
 
 
     type :: bare_infsup_real32_type
@@ -35,5 +36,37 @@ module ieee1788_fortran
     type :: bare_infsup_real128_type
         real(real128), private :: inf, sup
     end type bare_infsup_real128_type
+
+
+    !> `kind(x)` returns the kind value of the entity `x`.
+    interface kind
+
+        module pure elemental function bare_infsup_real32_kind(x) result(result)
+
+            type(bare_infsup_real32_type), intent(in) :: x
+
+            integer :: result
+
+        end function bare_infsup_real32_kind
+
+
+        module pure elemental function bare_infsup_real64_kind(x) result(result)
+
+            type(bare_infsup_real64_type), intent(in) :: x
+
+            integer :: result
+
+        end function bare_infsup_real64_kind
+
+
+        module pure elemental function bare_infsup_real128_kind(x) result(result)
+
+            type(bare_infsup_real128_type), intent(in) :: x
+
+            integer :: result
+
+        end function bare_infsup_real128_kind
+
+    end interface kind
 
 end module ieee1788_fortran
