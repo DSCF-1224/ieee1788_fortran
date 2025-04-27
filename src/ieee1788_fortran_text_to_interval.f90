@@ -1,11 +1,27 @@
 submodule (ieee1788_fortran) ieee1788_fortran_text_to_interval
 
-    character(len=1) :: lbracket = achar(91)
+    implicit none
 
-    character(len=1) :: rbracket = achar(93)
+
+    character(len=1), parameter :: comma    = achar(44)
+
+    character(len=1), parameter :: lbracket = achar(91)
+
+    character(len=1), parameter :: rbracket = achar(93)
 
 
     contains
+
+
+    pure elemental function index_comma(string)
+
+        character(len=*), intent(in) :: string
+
+        integer :: index_comma
+
+        index_comma = index( string = string(:), substring = comma, back = .false. )
+
+    end function index_comma
 
 
     pure elemental function index_lbracket(string)
@@ -41,12 +57,29 @@ submodule (ieee1788_fortran) ieee1788_fortran_text_to_interval
         &   loc_lbracket => index_lbracket( string(:) )   &!
         )
 
-            if ( loc_lbracket .lt. 1          ) return
-            if ( loc_lbracket .eq. len_string ) return
+            if ( loc_lbracket .lt. 1            ) return
+            if ( len_string   .le. loc_lbracket ) return
 
             associate( loc_rbracket => index_rbracket( string(:) ) )
 
-                if ( loc_rbracket .lt. loc_lbracket ) return
+                if ( loc_rbracket .lt. 1 ) return
+
+                associate( &!
+                &   loc_lbracket_p1 => loc_lbracket + 1 , &!
+                &   loc_rbracket_m1 => loc_rbracket - 1   &!
+                )
+
+                    if ( loc_rbracket_m1 .lt. loc_lbracket_p1 ) return
+
+                    associate( loc_comma => index_comma( string(loc_lbracket_p1:loc_rbracket_m1) ) )
+
+                        if ( loc_comma .lt. 1 ) then
+                        else
+                        end if
+
+                    end associate
+
+                end associate
 
             end associate
 
@@ -65,12 +98,29 @@ submodule (ieee1788_fortran) ieee1788_fortran_text_to_interval
         &   loc_lbracket => index_lbracket( string(:) )   &!
         )
 
-            if ( loc_lbracket .lt. 1          ) return
-            if ( loc_lbracket .eq. len_string ) return
+            if ( loc_lbracket .lt. 1            ) return
+            if ( len_string   .le. loc_lbracket ) return
 
             associate( loc_rbracket => index_rbracket( string(:) ) )
 
-                if ( loc_rbracket .lt. loc_lbracket ) return
+                if ( loc_rbracket .lt. 1 ) return
+
+                associate( &!
+                &   loc_lbracket_p1 => loc_lbracket + 1 , &!
+                &   loc_rbracket_m1 => loc_rbracket - 1   &!
+                )
+
+                    if ( loc_rbracket_m1 .lt. loc_lbracket_p1 ) return
+
+                    associate( loc_comma => index_comma( string(loc_lbracket_p1:loc_rbracket_m1) ) )
+
+                        if ( loc_comma .lt. 1 ) then
+                        else
+                        end if
+
+                    end associate
+
+                end associate
 
             end associate
 
@@ -89,12 +139,29 @@ submodule (ieee1788_fortran) ieee1788_fortran_text_to_interval
         &   loc_lbracket => index_lbracket( string(:) )   &!
         )
 
-            if ( loc_lbracket .lt. 1          ) return
-            if ( loc_lbracket .eq. len_string ) return
+            if ( loc_lbracket .lt. 1            ) return
+            if ( len_string   .le. loc_lbracket ) return
 
             associate( loc_rbracket => index_rbracket( string(:) ) )
 
-                if ( loc_rbracket .lt. loc_lbracket ) return
+                if ( loc_rbracket .lt. 1 ) return
+
+                associate( &!
+                &   loc_lbracket_p1 => loc_lbracket + 1 , &!
+                &   loc_rbracket_m1 => loc_rbracket - 1   &!
+                )
+
+                    if ( loc_rbracket_m1 .lt. loc_lbracket_p1 ) return
+
+                    associate( loc_comma => index_comma( string(loc_lbracket_p1:loc_rbracket_m1) ) )
+
+                        if ( loc_comma .lt. 1 ) then
+                        else
+                        end if
+
+                    end associate
+
+                end associate
 
             end associate
 
