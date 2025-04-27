@@ -38,8 +38,7 @@ submodule (ieee1788_fortran) ieee1788_fortran_text_to_interval
     !> `textToInterval` for `${TYPE_NAME}$_type`
     module procedure ${SUBROUTINE_NAME}$
 
-        ! TODO
-        ! call set_empty(interval)
+        call set_empty(interval)
 
         associate( &!
         &   len_string   => len( string(:) )            , &!

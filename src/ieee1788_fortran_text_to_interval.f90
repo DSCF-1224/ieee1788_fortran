@@ -34,8 +34,7 @@ submodule (ieee1788_fortran) ieee1788_fortran_text_to_interval
     !> `textToInterval` for `bare_infsup_real32_type`
     module procedure text_to_bare_infsup_real32
 
-        ! TODO
-        ! call set_empty(interval)
+        call set_empty(interval)
 
         associate( &!
         &   len_string   => len( string(:) )            , &!
@@ -53,8 +52,7 @@ submodule (ieee1788_fortran) ieee1788_fortran_text_to_interval
     !> `textToInterval` for `bare_infsup_real64_type`
     module procedure text_to_bare_infsup_real64
 
-        ! TODO
-        ! call set_empty(interval)
+        call set_empty(interval)
 
         associate( &!
         &   len_string   => len( string(:) )            , &!
@@ -72,8 +70,7 @@ submodule (ieee1788_fortran) ieee1788_fortran_text_to_interval
     !> `textToInterval` for `bare_infsup_real128_type`
     module procedure text_to_bare_infsup_real128
 
-        ! TODO
-        ! call set_empty(interval)
+        call set_empty(interval)
 
         associate( &!
         &   len_string   => len( string(:) )            , &!
