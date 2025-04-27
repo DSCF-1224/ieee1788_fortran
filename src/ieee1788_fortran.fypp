@@ -77,7 +77,7 @@ module ieee1788_fortran
         #:for KIND in REAL_KINDS
 
         #:set SUBROUTINE_NAME = "bare_infsup_" + KIND + "_" + INTERFACE_NAME
-        module impure elemental subroutine ${SUBROUTINE_NAME}$(x)
+        module pure elemental subroutine ${SUBROUTINE_NAME}$(x)
 
             type(bare_infsup_${KIND}$_type), intent(inout) :: x
 

@@ -107,21 +107,21 @@ module ieee1788_fortran
 
     interface set_empty
 
-        module impure elemental subroutine bare_infsup_real32_set_empty(x)
+        module pure elemental subroutine bare_infsup_real32_set_empty(x)
 
             type(bare_infsup_real32_type), intent(inout) :: x
 
         end subroutine bare_infsup_real32_set_empty
 
 
-        module impure elemental subroutine bare_infsup_real64_set_empty(x)
+        module pure elemental subroutine bare_infsup_real64_set_empty(x)
 
             type(bare_infsup_real64_type), intent(inout) :: x
 
         end subroutine bare_infsup_real64_set_empty
 
 
-        module impure elemental subroutine bare_infsup_real128_set_empty(x)
+        module pure elemental subroutine bare_infsup_real128_set_empty(x)
 
             type(bare_infsup_real128_type), intent(inout) :: x
 
