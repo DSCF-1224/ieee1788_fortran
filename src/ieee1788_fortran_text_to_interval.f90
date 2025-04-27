@@ -9,6 +9,15 @@ submodule (ieee1788_fortran) ieee1788_fortran_text_to_interval
 
     character(len=1), parameter :: rbracket = achar(93)
 
+    character(len=5), parameter :: string_empty = 'empty'
+
+
+    interface text_to_bare_infsup_1
+        module procedure :: text_to_bare_infsup_real32_1
+        module procedure :: text_to_bare_infsup_real64_1
+        module procedure :: text_to_bare_infsup_real128_1
+    end interface text_to_bare_infsup_1
+
 
     contains
 
@@ -22,6 +31,17 @@ submodule (ieee1788_fortran) ieee1788_fortran_text_to_interval
         index_comma = index( string = string(:), substring = comma, back = .false. )
 
     end function index_comma
+
+
+    pure elemental function index_empty(string)
+
+        character(len=*), intent(in) :: string
+
+        integer :: index_empty
+
+        index_empty = index( string = string(:), substring = string_empty, back = .false. )
+
+    end function index_empty
 
 
     pure elemental function index_lbracket(string)
@@ -44,6 +64,57 @@ submodule (ieee1788_fortran) ieee1788_fortran_text_to_interval
         index_rbracket = index( string = string(:), substring = rbracket, back = .false. )
 
     end function index_rbracket
+
+
+
+
+    pure elemental subroutine text_to_bare_infsup_real32_1(string, interval)
+
+        character(len=*), intent(in) :: string
+
+        type(bare_infsup_real32_type), intent(out) :: interval
+
+
+        if ( 1 .lt. index_empty( string(:) ) ) then
+
+            call set_empty(interval)
+
+        end if
+
+    end subroutine text_to_bare_infsup_real32_1
+
+
+    pure elemental subroutine text_to_bare_infsup_real64_1(string, interval)
+
+        character(len=*), intent(in) :: string
+
+        type(bare_infsup_real64_type), intent(out) :: interval
+
+
+        if ( 1 .lt. index_empty( string(:) ) ) then
+
+            call set_empty(interval)
+
+        end if
+
+    end subroutine text_to_bare_infsup_real64_1
+
+
+    pure elemental subroutine text_to_bare_infsup_real128_1(string, interval)
+
+        character(len=*), intent(in) :: string
+
+        type(bare_infsup_real128_type), intent(out) :: interval
+
+
+        if ( 1 .lt. index_empty( string(:) ) ) then
+
+            call set_empty(interval)
+
+        end if
+
+    end subroutine text_to_bare_infsup_real128_1
+
 
 
 
@@ -74,6 +145,9 @@ submodule (ieee1788_fortran) ieee1788_fortran_text_to_interval
                     associate( loc_comma => index_comma( string(loc_lbracket_p1:loc_rbracket_m1) ) )
 
                         if ( loc_comma .lt. 1 ) then
+
+                            call text_to_bare_infsup_1(string, interval)
+
                         else
                         end if
 
@@ -115,6 +189,9 @@ submodule (ieee1788_fortran) ieee1788_fortran_text_to_interval
                     associate( loc_comma => index_comma( string(loc_lbracket_p1:loc_rbracket_m1) ) )
 
                         if ( loc_comma .lt. 1 ) then
+
+                            call text_to_bare_infsup_1(string, interval)
+
                         else
                         end if
 
@@ -156,6 +233,9 @@ submodule (ieee1788_fortran) ieee1788_fortran_text_to_interval
                     associate( loc_comma => index_comma( string(loc_lbracket_p1:loc_rbracket_m1) ) )
 
                         if ( loc_comma .lt. 1 ) then
+
+                            call text_to_bare_infsup_1(string, interval)
+
                         else
                         end if
 

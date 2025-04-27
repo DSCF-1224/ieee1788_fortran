@@ -10,6 +10,18 @@ submodule (ieee1788_fortran) ieee1788_fortran_text_to_interval
 
     character(len=1), parameter :: rbracket = achar(93)
 
+    character(len=5), parameter :: string_empty = 'empty'
+
+
+    #:set TYPE_NAME = "bare_infsup"
+    #:set INTERFACE_NAME = "text_to_" + TYPE_NAME + "_1"
+    interface ${INTERFACE_NAME}$
+        #:for KIND in REAL_KINDS
+        #:set SUBROUTINE_NAME = "text_to_" + TYPE_NAME + "_" + KIND + "_1"
+        module procedure :: ${SUBROUTINE_NAME}$
+        #:endfor
+    end interface ${INTERFACE_NAME}$
+
 
     contains
 
@@ -23,6 +35,17 @@ submodule (ieee1788_fortran) ieee1788_fortran_text_to_interval
         index_comma = index( string = string(:), substring = comma, back = .false. )
 
     end function index_comma
+
+
+    pure elemental function index_empty(string)
+
+        character(len=*), intent(in) :: string
+
+        integer :: index_empty
+
+        index_empty = index( string = string(:), substring = string_empty, back = .false. )
+
+    end function index_empty
 
 
     pure elemental function index_lbracket(string)
@@ -45,6 +68,29 @@ submodule (ieee1788_fortran) ieee1788_fortran_text_to_interval
         index_rbracket = index( string = string(:), substring = rbracket, back = .false. )
 
     end function index_rbracket
+
+
+
+    #:for KIND in REAL_KINDS
+    #:set TYPE_NAME = "bare_infsup_" + KIND
+    #:set SUBROUTINE_NAME = "text_to_" + TYPE_NAME + "_1"
+
+    pure elemental subroutine ${SUBROUTINE_NAME}$(string, interval)
+
+        character(len=*), intent(in) :: string
+
+        type(${TYPE_NAME}$_type), intent(out) :: interval
+
+
+        if ( 1 .lt. index_empty( string(:) ) ) then
+
+            call set_empty(interval)
+
+        end if
+
+    end subroutine ${SUBROUTINE_NAME}$
+
+    #:endfor
 
 
     #:for KIND in REAL_KINDS
@@ -78,6 +124,9 @@ submodule (ieee1788_fortran) ieee1788_fortran_text_to_interval
                     associate( loc_comma => index_comma( string(loc_lbracket_p1:loc_rbracket_m1) ) )
 
                         if ( loc_comma .lt. 1 ) then
+
+                            call text_to_bare_infsup_1(string, interval)
+
                         else
                         end if
 
