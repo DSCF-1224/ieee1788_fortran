@@ -23,6 +23,7 @@ module ieee1788_fortran
     public :: is_ieee_positive_inf
     public :: is_ieee_positive_zero
     public :: kind
+    public :: set_empty
     public :: text_to_bare_infsup_real32
     public :: text_to_bare_infsup_real64
     public :: text_to_bare_infsup_real128
@@ -102,5 +103,30 @@ module ieee1788_fortran
         end function bare_infsup_real128_kind
 
     end interface kind
+
+
+    interface set_empty
+
+        module impure elemental subroutine bare_infsup_real32_set_empty(x)
+
+            type(bare_infsup_real32_type), intent(inout) :: x
+
+        end subroutine bare_infsup_real32_set_empty
+
+
+        module impure elemental subroutine bare_infsup_real64_set_empty(x)
+
+            type(bare_infsup_real64_type), intent(inout) :: x
+
+        end subroutine bare_infsup_real64_set_empty
+
+
+        module impure elemental subroutine bare_infsup_real128_set_empty(x)
+
+            type(bare_infsup_real128_type), intent(inout) :: x
+
+        end subroutine bare_infsup_real128_set_empty
+
+    end interface set_empty
 
 end module ieee1788_fortran

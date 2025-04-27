@@ -1,0 +1,24 @@
+#:include "ieee1788_fortran_common.fypp"
+submodule (ieee1788_fortran) ieee1788_fortran_set_empty
+
+    use, intrinsic :: ieee_arithmetic, only: ieee_negative_inf
+    use, intrinsic :: ieee_arithmetic, only: ieee_positive_inf
+    use, intrinsic :: ieee_arithmetic, only: ieee_value
+
+    implicit none
+
+
+    contains
+
+    #:for KIND in REAL_KINDS
+    #:set SUBROUTINE_NAME = "bare_infsup_" + KIND + "_set_empty"
+
+    module procedure ${SUBROUTINE_NAME}$
+
+        x%inf = ieee_value( x = x%inf, class = ieee_positive_inf )
+        x%sup = ieee_value( x = x%sup, class = ieee_negative_inf )
+
+    end procedure ${SUBROUTINE_NAME}$
+
+    #:endfor
+end submodule ieee1788_fortran_set_empty
