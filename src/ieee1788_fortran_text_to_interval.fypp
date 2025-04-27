@@ -1,0 +1,20 @@
+#:include "ieee1788_fortran_common.fypp"
+submodule (ieee1788_fortran) ieee1788_fortran_text_to_interval
+
+    character(len=1) :: left_square_bracket = achar(91)
+
+    character(len=1) :: right_square_bracket = achar(93)
+
+
+    contains
+
+    #:for KIND in REAL_KINDS
+    #:set TYPE_NAME = "bare_infsup_" + KIND
+    #:set SUBROUTINE_NAME = "text_to_" + TYPE_NAME
+
+    !> `textToInterval` for `${TYPE_NAME}$_type`
+    module procedure ${SUBROUTINE_NAME}$
+    end procedure ${SUBROUTINE_NAME}$
+
+    #:endfor
+end submodule ieee1788_fortran_text_to_interval

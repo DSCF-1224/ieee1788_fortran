@@ -23,6 +23,9 @@ module ieee1788_fortran
     public :: is_ieee_positive_inf
     public :: is_ieee_positive_zero
     public :: kind
+    public :: text_to_bare_infsup_real32
+    public :: text_to_bare_infsup_real64
+    public :: text_to_bare_infsup_real128
 
 
     type :: bare_infsup_real32_type
@@ -36,6 +39,37 @@ module ieee1788_fortran
     type :: bare_infsup_real128_type
         real(real128), private :: inf, sup
     end type bare_infsup_real128_type
+
+
+    interface
+
+        module pure elemental subroutine text_to_bare_infsup_real32(string, interval)
+
+            character(len=*), intent(in) :: string
+
+            type(bare_infsup_real32_type), intent(out) :: interval
+
+        end subroutine text_to_bare_infsup_real32
+
+
+        module pure elemental subroutine text_to_bare_infsup_real64(string, interval)
+
+            character(len=*), intent(in) :: string
+
+            type(bare_infsup_real64_type), intent(out) :: interval
+
+        end subroutine text_to_bare_infsup_real64
+
+
+        module pure elemental subroutine text_to_bare_infsup_real128(string, interval)
+
+            character(len=*), intent(in) :: string
+
+            type(bare_infsup_real128_type), intent(out) :: interval
+
+        end subroutine text_to_bare_infsup_real128
+
+    end interface
 
 
     !> `kind(x)` returns the kind value of the entity `x`.

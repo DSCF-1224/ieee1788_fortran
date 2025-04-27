@@ -22,6 +22,10 @@ module ieee1788_fortran
     public :: is_${TYPE}$
     #:endfor
     public :: kind
+    #:for KIND in REAL_KINDS
+    #:set TYPE_NAME = "bare_infsup_" + KIND
+    public :: text_to_${TYPE_NAME}$
+    #:endfor
 
     #:for KIND in REAL_KINDS
 
@@ -30,6 +34,23 @@ module ieee1788_fortran
         real(${KIND}$), private :: inf, sup
     end type ${TYPE_NAME}$
     #:endfor
+
+
+    interface
+        #:for KIND in REAL_KINDS
+
+        #:set TYPE_NAME = "bare_infsup_" + KIND
+        #:set SUBROUTINE_NAME = "text_to_" + TYPE_NAME
+        module pure elemental subroutine ${SUBROUTINE_NAME}$(string, interval)
+
+            character(len=*), intent(in) :: string
+
+            type(bare_infsup_${KIND}$_type), intent(out) :: interval
+
+        end subroutine ${SUBROUTINE_NAME}$
+
+        #:endfor
+    end interface
 
 
     !> `kind(x)` returns the kind value of the entity `x`.
