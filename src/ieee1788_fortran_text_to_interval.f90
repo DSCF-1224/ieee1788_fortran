@@ -19,15 +19,15 @@ submodule (ieee1788_fortran) ieee1788_fortran_text_to_interval
     end function index_lbracket
 
 
-    pure elemental function index_right(string)
+    pure elemental function index_rbracket(string)
 
         character(len=*), intent(in) :: string
 
-        integer :: index_right
+        integer :: index_rbracket
 
-        index_right = index( string = string(:), substring = lbracket, back = .false. )
+        index_rbracket = index( string = string(:), substring = rbracket, back = .false. )
 
-    end function index_right
+    end function index_rbracket
 
 
 
@@ -41,8 +41,14 @@ submodule (ieee1788_fortran) ieee1788_fortran_text_to_interval
         &   loc_lbracket => index_lbracket( string(:) )   &!
         )
 
-            if ( loc_lbracket .lt. 0          ) return
+            if ( loc_lbracket .lt. 1          ) return
             if ( loc_lbracket .eq. len_string ) return
+
+            associate( loc_rbracket => index_rbracket( string(:) ) )
+
+                if ( loc_rbracket .lt. loc_lbracket ) return
+
+            end associate
 
         end associate
 
@@ -59,8 +65,14 @@ submodule (ieee1788_fortran) ieee1788_fortran_text_to_interval
         &   loc_lbracket => index_lbracket( string(:) )   &!
         )
 
-            if ( loc_lbracket .lt. 0          ) return
+            if ( loc_lbracket .lt. 1          ) return
             if ( loc_lbracket .eq. len_string ) return
+
+            associate( loc_rbracket => index_rbracket( string(:) ) )
+
+                if ( loc_rbracket .lt. loc_lbracket ) return
+
+            end associate
 
         end associate
 
@@ -77,8 +89,14 @@ submodule (ieee1788_fortran) ieee1788_fortran_text_to_interval
         &   loc_lbracket => index_lbracket( string(:) )   &!
         )
 
-            if ( loc_lbracket .lt. 0          ) return
+            if ( loc_lbracket .lt. 1          ) return
             if ( loc_lbracket .eq. len_string ) return
+
+            associate( loc_rbracket => index_rbracket( string(:) ) )
+
+                if ( loc_rbracket .lt. loc_lbracket ) return
+
+            end associate
 
         end associate
 
