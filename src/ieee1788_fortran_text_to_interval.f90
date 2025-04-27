@@ -11,6 +11,8 @@ submodule (ieee1788_fortran) ieee1788_fortran_text_to_interval
 
     character(len=5), parameter :: string_empty = 'empty'
 
+    character(len=6), parameter :: string_entire = 'entire'
+
 
     interface text_to_bare_infsup_1
         module procedure :: text_to_bare_infsup_real32_1
@@ -42,6 +44,17 @@ submodule (ieee1788_fortran) ieee1788_fortran_text_to_interval
         index_empty = index( string = string(:), substring = string_empty, back = .false. )
 
     end function index_empty
+
+
+    pure elemental function index_entire(string)
+
+        character(len=*), intent(in) :: string
+
+        integer :: index_entire
+
+        index_entire = index( string = string(:), substring = string_entire, back = .false. )
+
+    end function index_entire
 
 
     pure elemental function index_lbracket(string)
@@ -79,6 +92,10 @@ submodule (ieee1788_fortran) ieee1788_fortran_text_to_interval
 
             call set_empty(interval)
 
+        else if ( 1 .lt. index_entire( string(:) ) ) then
+
+            call set_entire(interval)
+
         end if
 
     end subroutine text_to_bare_infsup_real32_1
@@ -95,6 +112,10 @@ submodule (ieee1788_fortran) ieee1788_fortran_text_to_interval
 
             call set_empty(interval)
 
+        else if ( 1 .lt. index_entire( string(:) ) ) then
+
+            call set_entire(interval)
+
         end if
 
     end subroutine text_to_bare_infsup_real64_1
@@ -110,6 +131,10 @@ submodule (ieee1788_fortran) ieee1788_fortran_text_to_interval
         if ( 1 .lt. index_empty( string(:) ) ) then
 
             call set_empty(interval)
+
+        else if ( 1 .lt. index_entire( string(:) ) ) then
+
+            call set_entire(interval)
 
         end if
 
