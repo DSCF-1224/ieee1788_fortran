@@ -33,10 +33,11 @@ module ieee1788_fortran
 
 
     !> `kind(x)` returns the kind value of the entity `x`.
-    interface kind
+    #:set INTERFACE_NAME = "kind"
+    interface ${INTERFACE_NAME}$
         #:for KIND in REAL_KINDS
 
-        #:set FUNCTION_NAME = "bare_infsup_" + KIND + "_kind"
+        #:set FUNCTION_NAME = "bare_infsup_" + KIND + "_" + INTERFACE_NAME
         module pure elemental function ${FUNCTION_NAME}$(x) result(result)
 
             type(bare_infsup_${KIND}$_type), intent(in) :: x
@@ -46,6 +47,6 @@ module ieee1788_fortran
         end function ${FUNCTION_NAME}$
 
         #:endfor
-    end interface kind
+    end interface ${INTERFACE_NAME}$
 
 end module ieee1788_fortran
