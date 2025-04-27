@@ -23,6 +23,7 @@ module ieee1788_fortran
     #:endfor
     public :: kind
     public :: set_empty
+    public :: set_entire
     #:for KIND in REAL_KINDS
     #:set TYPE_NAME = "bare_infsup_" + KIND
     public :: text_to_${TYPE_NAME}$
@@ -73,6 +74,21 @@ module ieee1788_fortran
 
 
     #:set INTERFACE_NAME = "set_empty"
+    interface ${INTERFACE_NAME}$
+        #:for KIND in REAL_KINDS
+
+        #:set SUBROUTINE_NAME = "bare_infsup_" + KIND + "_" + INTERFACE_NAME
+        module pure elemental subroutine ${SUBROUTINE_NAME}$(x)
+
+            type(bare_infsup_${KIND}$_type), intent(inout) :: x
+
+        end subroutine ${SUBROUTINE_NAME}$
+
+        #:endfor
+    end interface ${INTERFACE_NAME}$
+
+
+    #:set INTERFACE_NAME = "set_entire"
     interface ${INTERFACE_NAME}$
         #:for KIND in REAL_KINDS
 
