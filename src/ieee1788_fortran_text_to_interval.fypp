@@ -103,6 +103,22 @@ submodule (ieee1788_fortran) ieee1788_fortran_text_to_interval
 
             call set_entire(interval)
 
+        else
+
+            read( &!
+            &   unit   = string(:) , &!
+            &   fmt    = *         , &!
+            &   round  = 'DOWN'      &!
+            ) &!
+            interval%inf
+
+            read( &!
+            &   unit   = string(:) , &!
+            &   fmt    = *         , &!
+            &   round  = 'UP'        &!
+            ) &!
+            interval%sup
+
         end if
 
     end subroutine ${SUBROUTINE_NAME}$

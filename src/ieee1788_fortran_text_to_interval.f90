@@ -96,6 +96,22 @@ submodule (ieee1788_fortran) ieee1788_fortran_text_to_interval
 
             call set_entire(interval)
 
+        else
+
+            read( &!
+            &   unit   = string(:) , &!
+            &   fmt    = *         , &!
+            &   round  = 'DOWN'      &!
+            ) &!
+            interval%inf
+
+            read( &!
+            &   unit   = string(:) , &!
+            &   fmt    = *         , &!
+            &   round  = 'UP'        &!
+            ) &!
+            interval%sup
+
         end if
 
     end subroutine text_to_bare_infsup_real32_1
@@ -116,6 +132,22 @@ submodule (ieee1788_fortran) ieee1788_fortran_text_to_interval
 
             call set_entire(interval)
 
+        else
+
+            read( &!
+            &   unit   = string(:) , &!
+            &   fmt    = *         , &!
+            &   round  = 'DOWN'      &!
+            ) &!
+            interval%inf
+
+            read( &!
+            &   unit   = string(:) , &!
+            &   fmt    = *         , &!
+            &   round  = 'UP'        &!
+            ) &!
+            interval%sup
+
         end if
 
     end subroutine text_to_bare_infsup_real64_1
@@ -135,6 +167,22 @@ submodule (ieee1788_fortran) ieee1788_fortran_text_to_interval
         else if ( 1 .lt. index_entire( string(:) ) ) then
 
             call set_entire(interval)
+
+        else
+
+            read( &!
+            &   unit   = string(:) , &!
+            &   fmt    = *         , &!
+            &   round  = 'DOWN'      &!
+            ) &!
+            interval%inf
+
+            read( &!
+            &   unit   = string(:) , &!
+            &   fmt    = *         , &!
+            &   round  = 'UP'        &!
+            ) &!
+            interval%sup
 
         end if
 
