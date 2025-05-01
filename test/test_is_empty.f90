@@ -12,6 +12,7 @@ program test_is_empty
     use, non_intrinsic :: ieee1788_fortran, only: bare_infsup_real128_type
     use, non_intrinsic :: ieee1788_fortran, only: is_empty
     use, non_intrinsic :: ieee1788_fortran, only: set_empty
+    use, non_intrinsic :: ieee1788_fortran, only: set_entire
 
 
     implicit none
@@ -21,7 +22,7 @@ program test_is_empty
     print * , compiler_options()
 
 
-    block
+    using_set_empty: block
 
         type(bare_infsup_real32_type) :: bare_infsup_real32
         type(bare_infsup_real64_type) :: bare_infsup_real64
@@ -34,20 +35,49 @@ program test_is_empty
 
 
         if ( .not. is_empty(bare_infsup_real32) ) then
-            error stop
+            error stop 'bare_infsup_real32 applied `set_empty` must be [empty]'
         end if
 
 
         if ( .not. is_empty(bare_infsup_real64) ) then
-            error stop
+            error stop 'bare_infsup_real64 applied `set_empty` must be [empty]'
         end if
 
 
         if ( .not. is_empty(bare_infsup_real128) ) then
-            error stop
+            error stop 'bare_infsup_real128 applied `set_empty` must be [empty]'
         end if
 
-    end block
+    end block using_set_empty
+
+
+    using_set_entire: block
+
+        type(bare_infsup_real32_type) :: bare_infsup_real32
+        type(bare_infsup_real64_type) :: bare_infsup_real64
+        type(bare_infsup_real128_type) :: bare_infsup_real128
+
+
+        call set_entire(bare_infsup_real32)
+        call set_entire(bare_infsup_real64)
+        call set_entire(bare_infsup_real128)
+
+
+        if ( is_empty(bare_infsup_real32) ) then
+            error stop 'bare_infsup_real32 appiled `set_entire` must NOT be [empty]'
+        end if
+
+
+        if ( is_empty(bare_infsup_real64) ) then
+            error stop 'bare_infsup_real64 appiled `set_entire` must NOT be [empty]'
+        end if
+
+
+        if ( is_empty(bare_infsup_real128) ) then
+            error stop 'bare_infsup_real128 appiled `set_entire` must NOT be [empty]'
+        end if
+
+    end block using_set_entire
 
 
     print '(A)', 'OK: test_is_empty.fypp'
