@@ -18,6 +18,7 @@ module ieee1788_fortran
     #:for KIND in REAL_KINDS
     public :: bare_infsup_${KIND}$_type
     #:endfor
+    public :: is_empty
     #:for TYPE in IEEE_CLASS_TYPES
     public :: is_${TYPE}$
     #:endfor
@@ -53,6 +54,24 @@ module ieee1788_fortran
 
         #:endfor
     end interface
+
+
+    !> Checks whether `x` is empty set
+    #:set INTERFACE_NAME = "is_empty"
+    interface ${INTERFACE_NAME}$
+        #:for KIND in REAL_KINDS
+
+        #:set FUNCTION_NAME = "bare_infsup_" + KIND + "_" + INTERFACE_NAME
+        module pure elemental function ${FUNCTION_NAME}$(x) result(result)
+
+            type(bare_infsup_${KIND}$_type), intent(in) :: x
+
+            logical :: result
+
+        end function ${FUNCTION_NAME}$
+
+        #:endfor
+    end interface ${INTERFACE_NAME}$
 
 
     !> `kind(x)` returns the kind value of the entity `x`.

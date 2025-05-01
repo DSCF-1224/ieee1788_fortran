@@ -1,0 +1,32 @@
+#:include "ieee1788_fortran_common.fypp"
+submodule (ieee1788_fortran) ieee1788_fortran_is_empty
+
+    use, intrinsic :: ieee_arithmetic, only: ieee_unordered
+
+    implicit none
+
+
+    contains
+
+    #:for KIND in REAL_KINDS
+    #:set SUBROUTINE_NAME = "bare_infsup_" + KIND + "_is_empty"
+
+    module procedure ${SUBROUTINE_NAME}$
+
+        result = ieee_unordered(x%inf, x%sup)
+
+        if (result) then
+            result = .false.
+            return
+        end if
+
+        result = is_ieee_positive_inf(x%inf) .and. is_ieee_negative_inf(x%sup)
+
+        if (result) return
+
+        result = x%inf .gt. x%sup
+
+    end procedure ${SUBROUTINE_NAME}$
+
+    #:endfor
+end submodule ieee1788_fortran_is_empty
