@@ -1,0 +1,44 @@
+#:include "../src/ieee1788_fortran_common.fypp"
+program test_is_empty
+
+    use, intrinsic :: iso_fortran_env, only: compiler_options
+    use, intrinsic :: iso_fortran_env, only: compiler_version
+
+
+    #:for REAL_KIND in REAL_KINDS
+    use, non_intrinsic :: ieee1788_fortran, only: bare_infsup_${REAL_KIND}$_type
+    #:endfor
+    use, non_intrinsic :: ieee1788_fortran, only: is_empty
+    use, non_intrinsic :: ieee1788_fortran, only: set_empty
+
+
+    implicit none
+
+
+    print * , compiler_version()
+    print * , compiler_options()
+
+
+    block
+
+        #:for REAL_KIND in REAL_KINDS
+        type(bare_infsup_${REAL_KIND}$_type) :: bare_infsup_${REAL_KIND}$
+        #:endfor
+
+
+        #:for KIND in REAL_KINDS
+        call set_empty(bare_infsup_${REAL_KIND}$)
+        #:endfor
+
+        #:for KIND in REAL_KINDS
+
+        if ( .not. is_empty(bare_infsup_${REAL_KIND}$) ) then
+            error stop '; NG: is_empty(bare_infsup_${REAL_KIND}$ called is_empty) must be .true.'
+        end if
+
+        #:endfor
+    end block
+
+    print '(A)', 'OK: ${_FILE_}$'
+
+end program test_is_empty
