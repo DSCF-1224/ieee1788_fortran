@@ -1,0 +1,31 @@
+#:include "../src/ieee1788_fortran_common.fypp"
+program test_set_empty
+
+    use, intrinsic :: iso_fortran_env, only: compiler_options
+    use, intrinsic :: iso_fortran_env, only: compiler_version
+
+
+    #:for REAL_KIND in REAL_KINDS
+    use, non_intrinsic :: ieee1788_fortran, only: bare_infsup_${REAL_KIND}$_type
+    #:endfor
+    use, non_intrinsic :: ieee1788_fortran, only: set_empty
+
+
+    implicit none
+
+
+    #:for REAL_KIND in REAL_KINDS
+    type(bare_infsup_${REAL_KIND}$_type) :: bare_infsup_${REAL_KIND}$
+    #:endfor
+
+
+    print * , compiler_version()
+    print * , compiler_options()
+
+    #:for REAL_KIND in REAL_KINDS
+    call set_empty(bare_infsup_${REAL_KIND}$)
+    #:endfor
+
+    print '(A)', 'OK: ${_FILE_}$'
+
+end program test_set_empty

@@ -1,5 +1,7 @@
 #:include "ieee1788_fortran_common.fypp"
-submodule (ieee1788_fortran) ieee1788_fortran_kind
+#:set INTERFACE_NAME = "kind"
+#:set SUBMODULE_NAME = MODULE_NAME + "_" + INTERFACE_NAME
+submodule (ieee1788_fortran) ${SUBMODULE_NAME}$
 
     implicit none
 
@@ -7,7 +9,7 @@ submodule (ieee1788_fortran) ieee1788_fortran_kind
     contains
 
     #:for KIND in REAL_KINDS
-    #:set FUNCTION_NAME = "bare_infsup_" + KIND + "_kind"
+    #:set FUNCTION_NAME = "bare_infsup_" + KIND + "_" + INTERFACE_NAME
 
     module procedure ${FUNCTION_NAME}$
 
@@ -16,4 +18,4 @@ submodule (ieee1788_fortran) ieee1788_fortran_kind
     end procedure ${FUNCTION_NAME}$
 
     #:endfor
-end submodule ieee1788_fortran_kind
+end submodule ${SUBMODULE_NAME}$
