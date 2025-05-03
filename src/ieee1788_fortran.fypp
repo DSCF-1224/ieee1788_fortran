@@ -1,5 +1,5 @@
 #:include "ieee1788_fortran_common.fypp"
-module ieee1788_fortran
+module ${MODULE_NAME}$
 
     #:for KIND in REAL_KINDS
     use, intrinsic :: iso_fortran_env, only: ${KIND}$
@@ -45,4 +45,4 @@ module ieee1788_fortran
         #:endfor
     end interface kind
 
-end module ieee1788_fortran
+end module ${MODULE_NAME}$

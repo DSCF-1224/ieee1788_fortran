@@ -4,4 +4,6 @@
 
 #:set REAL_KINDS = ["real32", "real64", "real128"]
 
+#:set MODULE_NAME = "ieee1788_fortran"
+
 #:endmute
