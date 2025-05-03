@@ -18,9 +18,6 @@ module ieee1788_fortran
     #:for KIND in REAL_KINDS
     public :: bare_infsup_${KIND}$_type
     #:endfor
-    #:for TYPE in IEEE_CLASS_TYPES
-    public :: is_${TYPE}$
-    #:endfor
     public :: kind
 
     #:for KIND in REAL_KINDS

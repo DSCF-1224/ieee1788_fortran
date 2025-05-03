@@ -18,10 +18,6 @@ module ieee1788_fortran
     public :: bare_infsup_real32_type
     public :: bare_infsup_real64_type
     public :: bare_infsup_real128_type
-    public :: is_ieee_negative_inf
-    public :: is_ieee_negative_zero
-    public :: is_ieee_positive_inf
-    public :: is_ieee_positive_zero
     public :: kind
 
 
