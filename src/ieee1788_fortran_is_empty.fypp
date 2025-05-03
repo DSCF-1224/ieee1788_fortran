@@ -9,9 +9,9 @@ submodule (ieee1788_fortran) ieee1788_fortran_is_empty
     contains
 
     #:for KIND in REAL_KINDS
-    #:set SUBROUTINE_NAME = "bare_infsup_" + KIND + "_is_empty"
+    #:set FUNCTION_NAME = "bare_infsup_" + KIND + "_is_empty"
 
-    module procedure ${SUBROUTINE_NAME}$
+    module procedure ${FUNCTION_NAME}$
 
         result = ieee_unordered(x%inf, x%sup)
 
@@ -26,7 +26,7 @@ submodule (ieee1788_fortran) ieee1788_fortran_is_empty
 
         result = x%inf .gt. x%sup
 
-    end procedure ${SUBROUTINE_NAME}$
+    end procedure ${FUNCTION_NAME}$
 
     #:endfor
 end submodule ieee1788_fortran_is_empty
