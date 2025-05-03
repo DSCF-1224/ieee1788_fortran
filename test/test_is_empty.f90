@@ -35,17 +35,17 @@ program test_is_empty
 
 
         if ( .not. is_empty(bare_infsup_real32) ) then
-            error stop 'bare_infsup_real32 applied `set_empty` must be [empty]'
+            error stop 'is_empty(bare_infsup_real32 called `set_empty`) must be `.true.`'
         end if
 
 
         if ( .not. is_empty(bare_infsup_real64) ) then
-            error stop 'bare_infsup_real64 applied `set_empty` must be [empty]'
+            error stop 'is_empty(bare_infsup_real64 called `set_empty`) must be `.true.`'
         end if
 
 
         if ( .not. is_empty(bare_infsup_real128) ) then
-            error stop 'bare_infsup_real128 applied `set_empty` must be [empty]'
+            error stop 'is_empty(bare_infsup_real128 called `set_empty`) must be `.true.`'
         end if
 
     end block using_set_empty
@@ -64,17 +64,17 @@ program test_is_empty
 
 
         if ( is_empty(bare_infsup_real32) ) then
-            error stop 'bare_infsup_real32 appiled `set_entire` must NOT be [empty]'
+            error stop 'is_empty(bare_infsup_real32 called `set_entire`) must be `.false.`'
         end if
 
 
         if ( is_empty(bare_infsup_real64) ) then
-            error stop 'bare_infsup_real64 appiled `set_entire` must NOT be [empty]'
+            error stop 'is_empty(bare_infsup_real64 called `set_entire`) must be `.false.`'
         end if
 
 
         if ( is_empty(bare_infsup_real128) ) then
-            error stop 'bare_infsup_real128 appiled `set_entire` must NOT be [empty]'
+            error stop 'is_empty(bare_infsup_real128 called `set_entire`) must be `.false.`'
         end if
 
     end block using_set_entire
