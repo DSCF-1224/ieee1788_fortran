@@ -67,6 +67,7 @@ module ieee1788_fortran
     end interface kind
 
 
+    !> version: experimental
     !> set the empty set to `x`
     interface set_empty
 

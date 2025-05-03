@@ -49,6 +49,7 @@ module ${MODULE_NAME}$
     #:del INTERFACE_NAME
 
 
+    !> version: experimental
     !> set the empty set to `x`
     #:set INTERFACE_NAME = "set_empty"
     interface ${INTERFACE_NAME}$
