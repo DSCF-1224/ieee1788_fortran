@@ -1,0 +1,19 @@
+#:include "ieee1788_fortran_common.fypp"
+submodule (ieee1788_fortran) ieee1788_fortran_is_entire
+
+    implicit none
+
+
+    contains
+
+    #:for KIND in REAL_KINDS
+    #:set FUNCTION_NAME = "bare_infsup_" + KIND + "_is_entire"
+
+    module procedure ${FUNCTION_NAME}$
+
+        result = is_ieee_negative_inf(x%inf) .and. is_ieee_positive_inf(x%sup)
+
+    end procedure ${FUNCTION_NAME}$
+
+    #:endfor
+end submodule ieee1788_fortran_is_entire

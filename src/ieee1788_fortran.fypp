@@ -19,6 +19,7 @@ module ieee1788_fortran
     public :: bare_infsup_${KIND}$_type
     #:endfor
     public :: is_empty
+    public :: is_entire
     #:for TYPE in IEEE_CLASS_TYPES
     public :: is_${TYPE}$
     #:endfor
@@ -58,6 +59,24 @@ module ieee1788_fortran
 
     !> Checks whether `x` is empty set
     #:set INTERFACE_NAME = "is_empty"
+    interface ${INTERFACE_NAME}$
+        #:for KIND in REAL_KINDS
+
+        #:set FUNCTION_NAME = "bare_infsup_" + KIND + "_" + INTERFACE_NAME
+        module pure elemental function ${FUNCTION_NAME}$(x) result(result)
+
+            type(bare_infsup_${KIND}$_type), intent(in) :: x
+
+            logical :: result
+
+        end function ${FUNCTION_NAME}$
+
+        #:endfor
+    end interface ${INTERFACE_NAME}$
+
+
+    !> Checks whether `x` is the whole line
+    #:set INTERFACE_NAME = "is_entire"
     interface ${INTERFACE_NAME}$
         #:for KIND in REAL_KINDS
 
