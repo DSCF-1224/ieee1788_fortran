@@ -1,0 +1,19 @@
+#:include "ieee1788_fortran_common.fypp"
+submodule (ieee1788_fortran) ieee1788_fortran_kind
+
+    implicit none
+
+
+    contains
+
+    #:for KIND in REAL_KINDS
+    #:set FUNCTION_NAME = "bare_infsup_" + KIND + "_kind"
+
+    module procedure ${FUNCTION_NAME}$
+
+        result = kind(x%inf)
+
+    end procedure ${FUNCTION_NAME}$
+
+    #:endfor
+end submodule ieee1788_fortran_kind

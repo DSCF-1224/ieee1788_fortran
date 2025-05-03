@@ -4,15 +4,23 @@ license = "MIT"
 author = "DSCF-1224"
 maintainer = "37315588+DSCF-1224@users.noreply.github.com"
 copyright = "Copyright 2025, DSCF-1224"
+
 [build]
 auto-executables = true
 auto-tests = true
 auto-examples = true
 module-naming = false
+external-modules = [
+    "build/dependencies/ieee_class_fortran"
+]
+
 [install]
 library = false
+
 [fortran]
 implicit-typing = false
 implicit-external = false
 source-form = "free"
 
+[dependencies]
+ieee_class_fortran = { git = "https://github.com/DSCF-1224/ieee_class_fortran", branch = "main" }

@@ -1,0 +1,48 @@
+#:include "ieee1788_fortran_common.fypp"
+module ieee1788_fortran
+
+    #:for KIND in REAL_KINDS
+    use, intrinsic :: iso_fortran_env, only: ${KIND}$
+    #:endfor
+
+    #:for TYPE in IEEE_CLASS_TYPES
+    use, non_intrinsic :: ieee_class_fortran, only: is_${TYPE}$
+    #:endfor
+
+
+    implicit none
+
+
+    private
+
+    #:for KIND in REAL_KINDS
+    public :: bare_infsup_${KIND}$_type
+    #:endfor
+    public :: kind
+
+    #:for KIND in REAL_KINDS
+
+    #:set TYPE_NAME = "bare_infsup_" + KIND + "_type"
+    type :: ${TYPE_NAME}$
+        real(${KIND}$), private :: inf, sup
+    end type ${TYPE_NAME}$
+    #:endfor
+
+
+    !> `kind(x)` returns the kind value of the entity `x`.
+    interface kind
+        #:for KIND in REAL_KINDS
+
+        #:set FUNCTION_NAME = "bare_infsup_" + KIND + "_kind"
+        module pure elemental function ${FUNCTION_NAME}$(x) result(result)
+
+            type(bare_infsup_${KIND}$_type), intent(in) :: x
+
+            integer :: result
+
+        end function ${FUNCTION_NAME}$
+
+        #:endfor
+    end interface kind
+
+end module ieee1788_fortran
