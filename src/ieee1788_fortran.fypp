@@ -31,6 +31,7 @@ module ${MODULE_NAME}$
     #:endfor
 
 
+    !> version: experimental
     !> Checks whether `x` is empty set
     #:set INTERFACE_NAME = "is_empty"
     interface ${INTERFACE_NAME}$

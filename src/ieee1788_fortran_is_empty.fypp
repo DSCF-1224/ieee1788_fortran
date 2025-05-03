@@ -1,0 +1,30 @@
+#:include "ieee1788_fortran_common.fypp"
+#:set INTERFACE_NAME = "is_empty"
+#:set SUBMODULE_NAME = MODULE_NAME + "_" + INTERFACE_NAME
+submodule (ieee1788_fortran) ${SUBMODULE_NAME}$
+
+    use, intrinsic :: ieee_arithmetic, only: ieee_unordered
+
+
+    implicit none
+
+
+    contains
+
+    #:for KIND in REAL_KINDS
+    #:set FUNCTION_NAME = "bare_infsup_" + KIND + "_" + INTERFACE_NAME
+
+    module procedure ${FUNCTION_NAME}$
+
+        result = ieee_unordered(x%inf, x%sup)
+
+        if (result) then
+            result = .false.
+        else
+            result = x%inf .gt. x%sup
+        end if
+
+    end procedure ${FUNCTION_NAME}$
+
+    #:endfor
+end submodule ${SUBMODULE_NAME}$

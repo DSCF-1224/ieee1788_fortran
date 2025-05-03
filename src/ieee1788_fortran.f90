@@ -36,6 +36,7 @@ module ieee1788_fortran
     end type bare_infsup_real128_type
 
 
+    !> version: experimental
     !> Checks whether `x` is empty set
     interface is_empty
 
