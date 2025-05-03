@@ -19,6 +19,7 @@ module ${MODULE_NAME}$
     public :: bare_infsup_${KIND}$_type
     #:endfor
     public :: kind
+    public :: set_empty
 
     #:for KIND in REAL_KINDS
 
@@ -42,6 +43,23 @@ module ${MODULE_NAME}$
             integer :: result
 
         end function ${FUNCTION_NAME}$
+
+        #:endfor
+    end interface ${INTERFACE_NAME}$
+    #:del INTERFACE_NAME
+
+
+    !> set the empty set to `x`
+    #:set INTERFACE_NAME = "set_empty"
+    interface ${INTERFACE_NAME}$
+        #:for KIND in REAL_KINDS
+
+        #:set SUBROUTINE_NAME = "bare_infsup_" + KIND + "_" + INTERFACE_NAME
+        module pure elemental subroutine ${SUBROUTINE_NAME}$(x)
+
+            type(bare_infsup_${KIND}$_type), intent(inout) :: x
+
+        end subroutine ${SUBROUTINE_NAME}$
 
         #:endfor
     end interface ${INTERFACE_NAME}$
