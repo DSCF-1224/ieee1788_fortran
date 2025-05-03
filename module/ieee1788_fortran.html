@@ -88,7 +88,7 @@
 
             <li class="list-inline-item" id="statements"><i class="fa fa-list-ol"></i>
               <a data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-html="true"
-                 title="61.7% of total for modules and submodules.">50 statements</a>
+                 title="52.0% of total for modules and submodules.">65 statements</a>
             </li>
 
             <li class="list-inline-item" id="source-file">
@@ -136,6 +136,7 @@
       </a>
       <div id="inters-0" class="collapse">
         <div class="list-group list-group-flush">
+            <a class="list-group-item" href="../module/ieee1788_fortran.html#interface-is_empty">is_empty</a>
             <a class="list-group-item" href="../module/ieee1788_fortran.html#interface-kind">kind</a>
             <a class="list-group-item" href="../module/ieee1788_fortran.html#interface-set_empty">set_empty</a>
         </div>
@@ -180,8 +181,8 @@
         <ul class="list-group list-group-flush">
             <li class="list-group-item">
               <ul class="list-inline">
-                  <li class="list-inline-item">ieee_class_fortran</li>
                   <li class="list-inline-item"><a href='http://fortranwiki.org/fortran/show/iso_fortran_env'>iso_fortran_env</a></li>
+                  <li class="list-inline-item">ieee_class_fortran</li>
               </ul>
             </li>
         </ul>
@@ -195,6 +196,7 @@
             <li class="list-group-item">
               <ul class="list-inline">
                 <li class="list-inline-item"><h5>Descendants:</h5></li>
+                  <li class="list-inline-item"><a href='ieee1788_fortran_is_empty.html'>ieee1788_fortran_is_empty</a></li>
                   <li class="list-inline-item"><a href='ieee1788_fortran_kind.html'>ieee1788_fortran_kind</a></li>
                   <li class="list-inline-item"><a href='ieee1788_fortran_set_empty.html'>ieee1788_fortran_set_empty</a></li>
               </ul>
@@ -210,6 +212,148 @@
 
         <section>
           <h2>Interfaces</h2>
+              <div class="card">
+    <div class="card-header bg-light codesum">
+      <span class="anchor" id="interface-is_empty"></span>
+      <h3>public        interface <a href='../interface/is_empty.html'>is_empty</a> 
+      </h3>
+    </div>
+      <div class="card-body">
+        <p>Checks whether <code>x</code> is empty set</p>
+      </div>
+    <ul class="list-group">
+          <li class="list-group-item">
+                <h3>
+    private pure elemental module function bare_infsup_real128_is_empty(x) result(result)  
+
+    </h3>
+  
+
+  <h4>Arguments</h4>
+      <table class="table table-striped varlist">
+    <thead>
+      <tr>
+        <th scope="col">Type</th>
+<th scope="col">Intent</th><th scope="col">Optional</th>        <th scope="col">Attributes</th>
+        <th scope="col"></th>
+        <th scope="col">Name</th>
+        <th scope="col"></th>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-x~3"></span>
+              type(<a href='../type/bare_infsup_real128_type.html'>bare_infsup_real128_type</a>),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>x</strong></td>
+            <td>
+                
+            </td>
+        </tr>
+    </tbody>
+  </table>
+
+    <h4>
+    Return Value
+    <small>logical</small>
+    </h4>
+    
+
+          </li>
+          <li class="list-group-item">
+                <h3>
+    private pure elemental module function bare_infsup_real32_is_empty(x) result(result)  
+
+    </h3>
+  
+
+  <h4>Arguments</h4>
+      <table class="table table-striped varlist">
+    <thead>
+      <tr>
+        <th scope="col">Type</th>
+<th scope="col">Intent</th><th scope="col">Optional</th>        <th scope="col">Attributes</th>
+        <th scope="col"></th>
+        <th scope="col">Name</th>
+        <th scope="col"></th>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-x"></span>
+              type(<a href='../type/bare_infsup_real32_type.html'>bare_infsup_real32_type</a>),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>x</strong></td>
+            <td>
+                
+            </td>
+        </tr>
+    </tbody>
+  </table>
+
+    <h4>
+    Return Value
+    <small>logical</small>
+    </h4>
+    
+
+          </li>
+          <li class="list-group-item">
+                <h3>
+    private pure elemental module function bare_infsup_real64_is_empty(x) result(result)  
+
+    </h3>
+  
+
+  <h4>Arguments</h4>
+      <table class="table table-striped varlist">
+    <thead>
+      <tr>
+        <th scope="col">Type</th>
+<th scope="col">Intent</th><th scope="col">Optional</th>        <th scope="col">Attributes</th>
+        <th scope="col"></th>
+        <th scope="col">Name</th>
+        <th scope="col"></th>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-x~2"></span>
+              type(<a href='../type/bare_infsup_real64_type.html'>bare_infsup_real64_type</a>),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>x</strong></td>
+            <td>
+                
+            </td>
+        </tr>
+    </tbody>
+  </table>
+
+    <h4>
+    Return Value
+    <small>logical</small>
+    </h4>
+    
+
+          </li>
+    </ul>
+  </div>
+
               <div class="card">
     <div class="card-header bg-light codesum">
       <span class="anchor" id="interface-kind"></span>
@@ -240,7 +384,7 @@
     <tbody>
         <tr>
             <td>
-              <span class="anchor" id="variable-x~3"></span>
+              <span class="anchor" id="variable-x~6"></span>
               type(<a href='../type/bare_infsup_real128_type.html'>bare_infsup_real128_type</a>),
             </td>
 <td>intent(in)</td>
@@ -283,7 +427,7 @@
     <tbody>
         <tr>
             <td>
-              <span class="anchor" id="variable-x"></span>
+              <span class="anchor" id="variable-x~4"></span>
               type(<a href='../type/bare_infsup_real32_type.html'>bare_infsup_real32_type</a>),
             </td>
 <td>intent(in)</td>
@@ -326,7 +470,7 @@
     <tbody>
         <tr>
             <td>
-              <span class="anchor" id="variable-x~2"></span>
+              <span class="anchor" id="variable-x~5"></span>
               type(<a href='../type/bare_infsup_real64_type.html'>bare_infsup_real64_type</a>),
             </td>
 <td>intent(in)</td>
@@ -382,7 +526,7 @@
     <tbody>
         <tr>
             <td>
-              <span class="anchor" id="variable-x~6"></span>
+              <span class="anchor" id="variable-x~9"></span>
               type(<a href='../type/bare_infsup_real128_type.html'>bare_infsup_real128_type</a>),
             </td>
 <td>intent(inout)</td>
@@ -420,7 +564,7 @@
     <tbody>
         <tr>
             <td>
-              <span class="anchor" id="variable-x~4"></span>
+              <span class="anchor" id="variable-x~7"></span>
               type(<a href='../type/bare_infsup_real32_type.html'>bare_infsup_real32_type</a>),
             </td>
 <td>intent(inout)</td>
@@ -458,7 +602,7 @@
     <tbody>
         <tr>
             <td>
-              <span class="anchor" id="variable-x~5"></span>
+              <span class="anchor" id="variable-x~8"></span>
               type(<a href='../type/bare_infsup_real64_type.html'>bare_infsup_real64_type</a>),
             </td>
 <td>intent(inout)</td>
@@ -564,7 +708,7 @@
             <p class="text-end">
               Documentation generated by
               <a href="https://github.com/Fortran-FOSS-Programmers/ford">FORD</a>
- on 2025-05-03 11:59 +0000             </p>
+ on 2025-05-03 15:33 +0000             </p>
           </div>
         </div>
         <br>
