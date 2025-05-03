@@ -19,6 +19,7 @@ module ieee1788_fortran
     public :: bare_infsup_real64_type
     public :: bare_infsup_real128_type
     public :: kind
+    public :: set_empty
 
 
     type :: bare_infsup_real32_type
@@ -64,5 +65,32 @@ module ieee1788_fortran
         end function bare_infsup_real128_kind
 
     end interface kind
+
+
+    !> version: experimental
+    !> set the empty set to `x`
+    interface set_empty
+
+        module pure elemental subroutine bare_infsup_real32_set_empty(x)
+
+            type(bare_infsup_real32_type), intent(inout) :: x
+
+        end subroutine bare_infsup_real32_set_empty
+
+
+        module pure elemental subroutine bare_infsup_real64_set_empty(x)
+
+            type(bare_infsup_real64_type), intent(inout) :: x
+
+        end subroutine bare_infsup_real64_set_empty
+
+
+        module pure elemental subroutine bare_infsup_real128_set_empty(x)
+
+            type(bare_infsup_real128_type), intent(inout) :: x
+
+        end subroutine bare_infsup_real128_set_empty
+
+    end interface set_empty
 
 end module ieee1788_fortran
