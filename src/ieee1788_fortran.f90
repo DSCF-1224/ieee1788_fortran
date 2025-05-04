@@ -19,6 +19,7 @@ module ieee1788_fortran
     public :: bare_infsup_real64_type
     public :: bare_infsup_real128_type
     public :: is_empty
+    public :: is_entire
     public :: kind
     public :: set_empty
     public :: set_entire
@@ -68,6 +69,39 @@ module ieee1788_fortran
         end function bare_infsup_real128_is_empty
 
     end interface is_empty
+
+
+    !> version: experimental
+    !> Checks whether `x` is the whole line
+    interface is_entire
+
+        module pure elemental function bare_infsup_real32_is_entire(x) result(result)
+
+            type(bare_infsup_real32_type), intent(in) :: x
+
+            logical :: result
+
+        end function bare_infsup_real32_is_entire
+
+
+        module pure elemental function bare_infsup_real64_is_entire(x) result(result)
+
+            type(bare_infsup_real64_type), intent(in) :: x
+
+            logical :: result
+
+        end function bare_infsup_real64_is_entire
+
+
+        module pure elemental function bare_infsup_real128_is_entire(x) result(result)
+
+            type(bare_infsup_real128_type), intent(in) :: x
+
+            logical :: result
+
+        end function bare_infsup_real128_is_entire
+
+    end interface is_entire
 
 
     !> `kind(x)` returns the kind value of the entity `x`.
