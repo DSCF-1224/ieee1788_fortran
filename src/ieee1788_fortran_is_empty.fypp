@@ -16,12 +16,12 @@ submodule (ieee1788_fortran) ${SUBMODULE_NAME}$
 
     module procedure ${FUNCTION_NAME}$
 
-        result = ieee_unordered(x%inf, x%sup)
+        result = ieee_unordered(x%lower_bound, x%upper_bound)
 
         if (result) then
             result = .false.
         else
-            result = x%inf .gt. x%sup
+            result = x%lower_bound .gt. x%upper_bound
         end if
 
     end procedure ${FUNCTION_NAME}$

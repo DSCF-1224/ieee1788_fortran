@@ -13,7 +13,7 @@ submodule (ieee1788_fortran) ${SUBMODULE_NAME}$
 
     module procedure ${FUNCTION_NAME}$
 
-        result = kind(x%inf)
+        result = kind(x%lower_bound)
 
     end procedure ${FUNCTION_NAME}$
 

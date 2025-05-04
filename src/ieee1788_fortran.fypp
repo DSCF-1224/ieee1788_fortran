@@ -28,7 +28,7 @@ module ${MODULE_NAME}$
 
     #:set TYPE_NAME = "bare_infsup_" + KIND + "_type"
     type :: ${TYPE_NAME}$
-        real(${KIND}$), private :: inf, sup
+        real(${KIND}$), private :: lower_bound, upper_bound
     end type ${TYPE_NAME}$
     #:endfor
 
