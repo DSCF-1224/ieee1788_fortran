@@ -1,0 +1,21 @@
+#:include "ieee1788_fortran_common.fypp"
+#:set INTERFACE_NAME = "is_entire"
+#:set SUBMODULE_NAME = MODULE_NAME + "_" + INTERFACE_NAME
+submodule (ieee1788_fortran) ${SUBMODULE_NAME}$
+
+    implicit none
+
+
+    contains
+
+    #:for KIND in REAL_KINDS
+    #:set FUNCTION_NAME = "bare_infsup_" + KIND + "_" + INTERFACE_NAME
+
+    module procedure ${FUNCTION_NAME}$
+
+        result = is_ieee_negative_inf(x%inf) .and. is_ieee_positive_inf(x%sup)
+
+    end procedure ${FUNCTION_NAME}$
+
+    #:endfor
+end submodule ${SUBMODULE_NAME}$
