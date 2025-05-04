@@ -21,6 +21,7 @@ module ieee1788_fortran
     public :: is_empty
     public :: kind
     public :: set_empty
+    public :: set_entire
 
 
     type :: bare_infsup_real32_type
@@ -126,5 +127,32 @@ module ieee1788_fortran
         end subroutine bare_infsup_real128_set_empty
 
     end interface set_empty
+
+
+    !> version: experimental
+    !> set the whole line to `x`
+    interface set_entire
+
+        module pure elemental subroutine bare_infsup_real32_set_entire(x)
+
+            type(bare_infsup_real32_type), intent(inout) :: x
+
+        end subroutine bare_infsup_real32_set_entire
+
+
+        module pure elemental subroutine bare_infsup_real64_set_entire(x)
+
+            type(bare_infsup_real64_type), intent(inout) :: x
+
+        end subroutine bare_infsup_real64_set_entire
+
+
+        module pure elemental subroutine bare_infsup_real128_set_entire(x)
+
+            type(bare_infsup_real128_type), intent(inout) :: x
+
+        end subroutine bare_infsup_real128_set_entire
+
+    end interface set_entire
 
 end module ieee1788_fortran
