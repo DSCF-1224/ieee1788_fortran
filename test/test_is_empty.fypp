@@ -10,6 +10,7 @@ program test_is_empty
     #:endfor
     use, non_intrinsic :: ieee1788_fortran, only: is_empty
     use, non_intrinsic :: ieee1788_fortran, only: set_empty
+    use, non_intrinsic :: ieee1788_fortran, only: set_entire
 
 
     implicit none
@@ -38,6 +39,28 @@ program test_is_empty
 
         #:endfor
     end block
+
+
+    block
+
+        #:for REAL_KIND in REAL_KINDS
+        type(bare_infsup_${REAL_KIND}$_type) :: bare_infsup_${REAL_KIND}$
+        #:endfor
+
+
+        #:for KIND in REAL_KINDS
+        call set_entire(bare_infsup_${REAL_KIND}$)
+        #:endfor
+
+        #:for KIND in REAL_KINDS
+
+        if ( is_empty(bare_infsup_${REAL_KIND}$) ) then
+            error stop '; NG: is_empty(bare_infsup_${REAL_KIND}$ called set_entire) must be .false.'
+        end if
+
+        #:endfor
+    end block
+
 
     print '(A)', 'OK: ${_FILE_}$'
 

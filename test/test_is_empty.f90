@@ -9,6 +9,7 @@ program test_is_empty
     use, non_intrinsic :: ieee1788_fortran, only: bare_infsup_real128_type
     use, non_intrinsic :: ieee1788_fortran, only: is_empty
     use, non_intrinsic :: ieee1788_fortran, only: set_empty
+    use, non_intrinsic :: ieee1788_fortran, only: set_entire
 
 
     implicit none
@@ -45,6 +46,36 @@ program test_is_empty
         end if
 
     end block
+
+
+    block
+
+        type(bare_infsup_real32_type) :: bare_infsup_real32
+        type(bare_infsup_real64_type) :: bare_infsup_real64
+        type(bare_infsup_real128_type) :: bare_infsup_real128
+
+
+        call set_entire(bare_infsup_real128)
+        call set_entire(bare_infsup_real128)
+        call set_entire(bare_infsup_real128)
+
+
+        if ( is_empty(bare_infsup_real128) ) then
+            error stop '; NG: is_empty(bare_infsup_real128 called set_entire) must be .false.'
+        end if
+
+
+        if ( is_empty(bare_infsup_real128) ) then
+            error stop '; NG: is_empty(bare_infsup_real128 called set_entire) must be .false.'
+        end if
+
+
+        if ( is_empty(bare_infsup_real128) ) then
+            error stop '; NG: is_empty(bare_infsup_real128 called set_entire) must be .false.'
+        end if
+
+    end block
+
 
     print '(A)', 'OK: test_is_empty.fypp'
 
