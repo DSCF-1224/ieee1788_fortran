@@ -1,0 +1,26 @@
+#:include "ieee1788_fortran_common.fypp"
+#:set INTERFACE_NAME = "set_entire"
+#:set SUBMODULE_NAME = MODULE_NAME + "_" + INTERFACE_NAME
+submodule (ieee1788_fortran) ${SUBMODULE_NAME}$
+
+    use, non_intrinsic :: ieee_class_fortran, only: set_ieee_negative_inf
+    use, non_intrinsic :: ieee_class_fortran, only: set_ieee_positive_inf
+
+
+    implicit none
+
+
+    contains
+
+    #:for KIND in REAL_KINDS
+    #:set SUBROUTINE_NAME = "bare_infsup_" + KIND + "_" + INTERFACE_NAME
+
+    module procedure ${SUBROUTINE_NAME}$
+
+        call set_ieee_negative_inf(x%inf)
+        call set_ieee_positive_inf(x%sup)
+
+    end procedure ${SUBROUTINE_NAME}$
+
+    #:endfor
+end submodule ${SUBMODULE_NAME}$
