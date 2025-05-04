@@ -33,7 +33,7 @@ program test_is_empty
         #:for KIND in REAL_KINDS
 
         if ( .not. is_empty(bare_infsup_${REAL_KIND}$) ) then
-            error stop '; NG: is_empty(bare_infsup_${REAL_KIND}$ called is_empty) must be .true.'
+            error stop '; NG: is_empty(bare_infsup_${REAL_KIND}$ called set_empty) must be .true.'
         end if
 
         #:endfor

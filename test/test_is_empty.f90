@@ -31,17 +31,17 @@ program test_is_empty
 
 
         if ( .not. is_empty(bare_infsup_real128) ) then
-            error stop '; NG: is_empty(bare_infsup_real128 called is_empty) must be .true.'
+            error stop '; NG: is_empty(bare_infsup_real128 called set_empty) must be .true.'
         end if
 
 
         if ( .not. is_empty(bare_infsup_real128) ) then
-            error stop '; NG: is_empty(bare_infsup_real128 called is_empty) must be .true.'
+            error stop '; NG: is_empty(bare_infsup_real128 called set_empty) must be .true.'
         end if
 
 
         if ( .not. is_empty(bare_infsup_real128) ) then
-            error stop '; NG: is_empty(bare_infsup_real128 called is_empty) must be .true.'
+            error stop '; NG: is_empty(bare_infsup_real128 called set_empty) must be .true.'
         end if
 
     end block
