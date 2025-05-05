@@ -26,15 +26,15 @@ module ieee1788_fortran
 
 
     type :: bare_infsup_real32_type
-        real(real32), private :: inf, sup
+        real(real32), private :: lower_bound, upper_bound
     end type bare_infsup_real32_type
 
     type :: bare_infsup_real64_type
-        real(real64), private :: inf, sup
+        real(real64), private :: lower_bound, upper_bound
     end type bare_infsup_real64_type
 
     type :: bare_infsup_real128_type
-        real(real128), private :: inf, sup
+        real(real128), private :: lower_bound, upper_bound
     end type bare_infsup_real128_type
 
 

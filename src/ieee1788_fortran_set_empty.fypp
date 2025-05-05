@@ -17,8 +17,8 @@ submodule (ieee1788_fortran) ${SUBMODULE_NAME}$
 
     module procedure ${SUBROUTINE_NAME}$
 
-        call set_ieee_positive_inf(x%inf)
-        call set_ieee_negative_inf(x%sup)
+        call set_ieee_positive_inf(x%lower_bound)
+        call set_ieee_negative_inf(x%upper_bound)
 
     end procedure ${SUBROUTINE_NAME}$
 

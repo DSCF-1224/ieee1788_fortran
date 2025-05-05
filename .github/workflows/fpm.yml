@@ -3,7 +3,7 @@ name: fpm
 on: [push, pull_request]
 
 env:
-  GFORTRAN_FLAGS: "-Wall -Wextra -std=f2008 -ffree-line-length-none -fimplicit-none -pedantic"
+  GFORTRAN_FLAGS: "-Wall -Wextra -Werror -pedantic -std=f2008 -ffree-line-length-none -fimplicit-none -pedantic"
 
 jobs:
   fpm:

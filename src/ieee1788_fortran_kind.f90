@@ -8,21 +8,21 @@ submodule (ieee1788_fortran) ieee1788_fortran_kind
 
     module procedure bare_infsup_real32_kind
 
-        result = kind(x%inf)
+        result = kind(x%lower_bound)
 
     end procedure bare_infsup_real32_kind
 
 
     module procedure bare_infsup_real64_kind
 
-        result = kind(x%inf)
+        result = kind(x%lower_bound)
 
     end procedure bare_infsup_real64_kind
 
 
     module procedure bare_infsup_real128_kind
 
-        result = kind(x%inf)
+        result = kind(x%lower_bound)
 
     end procedure bare_infsup_real128_kind
 
