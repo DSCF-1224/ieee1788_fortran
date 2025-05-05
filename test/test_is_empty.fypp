@@ -5,8 +5,8 @@ program test_is_empty
     use, intrinsic :: iso_fortran_env, only: compiler_version
 
 
-    #:for REAL_KIND in REAL_KINDS
-    use, non_intrinsic :: ieee1788_fortran, only: bare_infsup_${REAL_KIND}$_type
+    #:for KIND in REAL_KINDS
+    use, non_intrinsic :: ieee1788_fortran, only: bare_infsup_${KIND}$_type
     #:endfor
     use, non_intrinsic :: ieee1788_fortran, only: is_empty
     use, non_intrinsic :: ieee1788_fortran, only: set_empty
@@ -22,19 +22,19 @@ program test_is_empty
 
     block
 
-        #:for REAL_KIND in REAL_KINDS
-        type(bare_infsup_${REAL_KIND}$_type) :: bare_infsup_${REAL_KIND}$
+        #:for KIND in REAL_KINDS
+        type(bare_infsup_${KIND}$_type) :: bare_infsup_${KIND}$
         #:endfor
 
 
         #:for KIND in REAL_KINDS
-        call set_empty(bare_infsup_${REAL_KIND}$)
+        call set_empty(bare_infsup_${KIND}$)
         #:endfor
 
         #:for KIND in REAL_KINDS
 
-        if ( .not. is_empty(bare_infsup_${REAL_KIND}$) ) then
-            error stop '; NG: is_empty(bare_infsup_${REAL_KIND}$ called set_empty) must be .true.'
+        if ( .not. is_empty(bare_infsup_${KIND}$) ) then
+            error stop '; NG: is_empty(bare_infsup_${KIND}$ called set_empty) must be .true.'
         end if
 
         #:endfor
@@ -43,19 +43,19 @@ program test_is_empty
 
     block
 
-        #:for REAL_KIND in REAL_KINDS
-        type(bare_infsup_${REAL_KIND}$_type) :: bare_infsup_${REAL_KIND}$
+        #:for KIND in REAL_KINDS
+        type(bare_infsup_${KIND}$_type) :: bare_infsup_${KIND}$
         #:endfor
 
 
         #:for KIND in REAL_KINDS
-        call set_entire(bare_infsup_${REAL_KIND}$)
+        call set_entire(bare_infsup_${KIND}$)
         #:endfor
 
         #:for KIND in REAL_KINDS
 
-        if ( is_empty(bare_infsup_${REAL_KIND}$) ) then
-            error stop '; NG: is_empty(bare_infsup_${REAL_KIND}$ called set_entire) must be .false.'
+        if ( is_empty(bare_infsup_${KIND}$) ) then
+            error stop '; NG: is_empty(bare_infsup_${KIND}$ called set_entire) must be .false.'
         end if
 
         #:endfor

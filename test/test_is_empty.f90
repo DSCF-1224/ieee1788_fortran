@@ -26,18 +26,18 @@ program test_is_empty
         type(bare_infsup_real128_type) :: bare_infsup_real128
 
 
-        call set_empty(bare_infsup_real128)
-        call set_empty(bare_infsup_real128)
+        call set_empty(bare_infsup_real32)
+        call set_empty(bare_infsup_real64)
         call set_empty(bare_infsup_real128)
 
 
-        if ( .not. is_empty(bare_infsup_real128) ) then
-            error stop '; NG: is_empty(bare_infsup_real128 called set_empty) must be .true.'
+        if ( .not. is_empty(bare_infsup_real32) ) then
+            error stop '; NG: is_empty(bare_infsup_real32 called set_empty) must be .true.'
         end if
 
 
-        if ( .not. is_empty(bare_infsup_real128) ) then
-            error stop '; NG: is_empty(bare_infsup_real128 called set_empty) must be .true.'
+        if ( .not. is_empty(bare_infsup_real64) ) then
+            error stop '; NG: is_empty(bare_infsup_real64 called set_empty) must be .true.'
         end if
 
 
@@ -55,18 +55,18 @@ program test_is_empty
         type(bare_infsup_real128_type) :: bare_infsup_real128
 
 
-        call set_entire(bare_infsup_real128)
-        call set_entire(bare_infsup_real128)
+        call set_entire(bare_infsup_real32)
+        call set_entire(bare_infsup_real64)
         call set_entire(bare_infsup_real128)
 
 
-        if ( is_empty(bare_infsup_real128) ) then
-            error stop '; NG: is_empty(bare_infsup_real128 called set_entire) must be .false.'
+        if ( is_empty(bare_infsup_real32) ) then
+            error stop '; NG: is_empty(bare_infsup_real32 called set_entire) must be .false.'
         end if
 
 
-        if ( is_empty(bare_infsup_real128) ) then
-            error stop '; NG: is_empty(bare_infsup_real128 called set_entire) must be .false.'
+        if ( is_empty(bare_infsup_real64) ) then
+            error stop '; NG: is_empty(bare_infsup_real64 called set_entire) must be .false.'
         end if
 
 
